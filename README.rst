@@ -18,7 +18,7 @@ NI Devices Utilities
 
 Utilities for NI devices using nidaqmx module
 
-
+* `Devolopement notes <./docs/dev_notes.md>`_
 * Free software: GNU General Public License v3
 * Documentation: https://ni-devices-utilities.readthedocs.io.
 
