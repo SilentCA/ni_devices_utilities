@@ -5,6 +5,13 @@
 
 # TODO
 - [ ] 在硬件上测试模拟输入的开始触发。
+- [ ] 了解数字输出的定时机制是否和采样定时一样
+- [ ] 采集卡采集的信号与实际信号不同，频率不同
+- [ ] 采集卡不能使用TTL进行触发，采集卡会占用TTL模块
+
+# 测试记录
+- 采集卡和TTL不能同时使用TTL上的输入输出线
+- AcquisitionType.CONTINUOUS不能是数字输出一直输出
 
 # 采集卡功能
 - 设置采样时间、采样率和采样通道等参数
@@ -72,6 +79,17 @@ Represents the start trigger configurations for a DAQmx task.
 - `dig_edge_edge`: Specifies on which edge of a digital pulse to start acquiring or generating samples.
 - `dig_edge_src`: Specifies the name of a terminal where there is a digital signal to use as the source of the Start Trigger.
 - `cfg_dig_edge_start_trig()`: Configures the task to start acquiring or generating samples on a rising or falling edge of a digital signal.
+
+# nidaqmx.task.out_stream
+Exposes an output data stream on a DAQmx task.
+- `regen_mode`: Specifies whether to allow NI-DAQmx to generate the same data multiple times.
+
+# nidaqmx.stream_writers
+用来向NI-DAQmx task中的输出通道写入输入数据
+- class `Writes samples to a single digital output channel in an NI-DAQmx task.`: Writes samples to a single digital output channel in an NI-DAQmx task.
+  - `write_many_sample_port_byte()`: Writes one or more 8-bit unsigned integer samples to a single digital output channel in a task.
+  - `write_one_sample_port_byte()`: Writes a single 8-bit unsigned integer sample to a single digital output channel in a task.
+  - `write_one_sample_multi_line()`: Writes a single boolean sample to a single digital output channel in a task. The channel can contain multiple digital lines.
 
 # 查看系统上可用的设备和设备的可用通道
 通道名称示例
