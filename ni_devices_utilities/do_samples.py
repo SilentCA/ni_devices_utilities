@@ -16,3 +16,8 @@ task.timing.samp_timing_type = nidaqmx.constants.SampleTimingType.ON_DEMAND
 task.write(True)
 # Write a list of samples
 task.write([True, False], auto_start=True)
+
+##------------ Close task ------------------------------
+# Clears the task, aborting the task and releasing any resources the task 
+# reserved.
+task.close()
