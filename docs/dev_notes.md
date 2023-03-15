@@ -5,9 +5,12 @@
 
 # TODO
 - [ ] 在硬件上测试模拟输入的开始触发。
-- [ ] 了解数字输出的定时机制是否和采样定时一样
-- [ ] 采集卡采集的信号与实际信号不同，频率不同
-- [ ] 采集卡不能使用TTL进行触发，采集卡会占用TTL模块
+- [x] 了解数字输出的定时机制是否和采样定时一样
+- [x] 采集卡采集的信号与实际信号不同，频率不同
+      实际的采样率和设置的不同，设备支持一些特定的采样率。
+- [x] 采集卡不能使用TTL进行触发，采集卡会占用TTL模块
+      触发信号的来源需要设置为输入模式，来读取外界信号。此时不能把该来源同时设置为输出模式。
+- [ ] 测试重生成模式
 
 # 测试记录
 - 采集卡和TTL不能同时使用TTL上的输入输出线
@@ -108,4 +111,6 @@ phys_chans = system.devices['Dev1'].ai_physical_chans
 phys_ports = system.devices['Dev2'].do_ports
 # 可用数字输出线
 phys_lines = system.devices['Dev2'].do_lines
+# 设备上的接线端子
+terminals = system.devices['Dev2'].terminals
 ```
