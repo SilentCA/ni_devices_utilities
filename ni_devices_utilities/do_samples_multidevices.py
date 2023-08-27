@@ -26,23 +26,16 @@ task.timing.samp_quant_samp_mode = nidaqmx.constants.AcquisitionType.CONTINUOUS
 task.timing.samp_quant_samp_per_chan = 1000
 
 ##--------  Write data to task ---------------------------
-mode = 1
-
-if mode == 1:
-    # Create a stream writer
-    writer = nidaqmx.stream_writers.DigitalSingleChannelWriter(task.out_stream)
-    # Auto start
-    writer.auto_start = True
-    # Data to be writen
-    data = np.array([0xFFFF,0x00FF,0xFF00]*100, np.uint16)
-    writer.write_many_sample_port_uint16(data)
-
-# Or create a multichannel writer
-if mode == 2:
-    writer = nidaqmx.stream_writers.DigitalMultiChannelWriter(task.out_stream)
-    writer.auto_start = True
-    data = np.array([[0xFF,0x00,0xFF],[0xFF,0xFF,0x00]], np.uint8)
-    writer.write_many_sample_port_byte(data)
+# Create a multichannel writer
+writer = nidaqmx.stream_writers.DigitalMultiChannelWriter(task.out_stream)
+# Auto start
+writer.auto_start = True
+# Data to be writen
+# Each row corresponds to a channel in the task.
+# The order of the channels in the array correspond to the order
+# the channels added to the task.
+data = np.array([[0xFF,0x00,0xFF],[0x00,0xFF,0x00]], np.uint8)
+writer.write_many_sample_port_byte(data)
 
 # Wait write to end
 # task.wait_until_done(timeout=30)
