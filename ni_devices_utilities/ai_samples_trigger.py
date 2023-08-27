@@ -27,7 +27,7 @@ task.timing.cfg_samp_clk_timing(
 # task.read(100)
 
 # Set start trigger: tigger source and tigger edge
-task.triggers.start_trigger.cfg_dig_edge_start_trig('/cDAQ1DIOM/PFI0',
+task.triggers.start_trigger.cfg_dig_edge_start_trig('/cDAQ1/PFI0',
         trigger_edge=nidaqmx.constants.Edge.RISING)
 
 ##--------- Read data from task -------------------------
